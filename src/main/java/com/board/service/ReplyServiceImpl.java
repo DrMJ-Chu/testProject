@@ -1,44 +1,39 @@
-package com.board.dao;
+package com.board.service;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.board.dao.ReplyDAO;
 import com.board.domain.ReplyVO;
 
 @Repository
-public class ReplyDAOImpl implements ReplyDAO {
+public class ReplyServiceImpl implements ReplyService {
 
 	@Inject
-	private SqlSession sql;
-
-	private static String namespace = "com.board.mappers.reply";
+	private ReplyDAO dao;
 
 	// 댓글 조회
 	@Override
 	public List<ReplyVO> list(int bno) throws Exception {
-		return sql.selectList(namespace + ".replyList", bno);
+		return dao.list(bno);
 	}
 
-	// 댓글 작성
 	@Override
 	public void write(ReplyVO vo) throws Exception {
-		sql.insert(namespace + ".replyWrite", vo);
+		dao.write(vo);
 	}
 
-	// 댓글 수정
 	@Override
 	public void modify(ReplyVO vo) throws Exception {
-		sql.update(namespace + ".replyModify", vo);
+		dao.modify(vo);
 	}
 
-	// 댓글 삭제
 	@Override
 	public void delete(ReplyVO vo) throws Exception {
-		sql.delete(namespace + ".replyDelete", vo);
+		dao.delete(vo);
 	}
 
 }

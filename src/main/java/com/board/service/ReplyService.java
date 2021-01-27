@@ -1,15 +1,15 @@
-package com.board.dao;
+package com.board.service;
 
 import java.util.List;
 
 import com.board.domain.ReplyVO;
 
-public interface ReplyDAO {
+public interface ReplyService {
 
 	// 댓글 조회
 	public List<ReplyVO> list(int bno) throws Exception;
 
-	// 댓글 작성
+	// 댓글 조회
 	public void write(ReplyVO vo) throws Exception;
 
 	// 댓글 수정
